@@ -14,7 +14,7 @@ Queried the Twitter API with the filters 'Egpyt' and 'Terrorism'. This was restr
 
 The data was parsed to show 
 
-'date, time: retweet or not, @user_name and text'
+`date, time: retweet or not, @user_name and text`
 
 ### Model
 ##### Description and motivation
