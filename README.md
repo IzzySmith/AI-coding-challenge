@@ -13,5 +13,6 @@ Can we predict how long a story will stay relevant based on initial reaction?
 Using the Twitter API with the filters 'Egpyt' and 'Terrorism'
 
 ### Model
+##### Description and motivation
 
 Gensim model word2vec https://radimrehurek.com/gensim/models/word2vec.html
