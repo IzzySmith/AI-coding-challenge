@@ -10,7 +10,7 @@ Can we predict how long a story will stay relevant based on initial reaction?
 
 ### Data 
 
-Queried the Twitter API with the filters 'Egpyt' and 'Terrorism'. This was restricted to the last 7 days, as, with a free basic account, I query a longer time span.
+Queried the Twitter API with the filters 'Egpyt' and 'Terrorism'. This was restricted to the last 7 days, as, with a free basic account, I cannot query a longer time span.
 
 The data was parsed to show 
 
