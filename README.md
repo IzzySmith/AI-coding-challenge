@@ -16,6 +16,8 @@ The data was parsed to show
 
 `date, time: retweet or not, @user_name and text`
 
+In total, over the 7 day period, 102,448 tweets were retrieved
+
 ### Model
 ##### Description and motivation
 
