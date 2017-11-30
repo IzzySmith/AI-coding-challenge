@@ -60,6 +60,10 @@ The tweets were aranged as so:
 2017-11-19 114
 `
 
+
+Unsuprisingly, the majority of tweets were on the day the attack happened, with a drop off over the days following it.
+
+
 ### Model
 ##### Description and motivation
 
