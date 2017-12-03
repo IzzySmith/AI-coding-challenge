@@ -49,10 +49,9 @@ def remove_unwanted_chars(line):
     text = ' '.join([word for word in line.split() if word not in stops])
     #remove punctuation, usernames, links, punctuation
     without_urls_number_retweet = punct.sub('', text)
-    without_punct = without_urls_number_retweet.strip(string.punctuation)
     
     #remove the stopwords
-    tokenised = word_tokenize(without_punct)
+    tokenised = word_tokenize(without_urls_number_retweet)
     return [stemmer.stem(t) for t in tokenised]
 
 tokenised_sentances = get_list_of_sentances('data_collected.txt')
