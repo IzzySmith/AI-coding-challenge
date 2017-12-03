@@ -2,10 +2,17 @@ from collections import defaultdict
 import pattern3
 import nltk
 from nltk.tokenize import word_tokenize
+from nltk.stem import *
 import gensim
 import re
-from string import punctuation
+import string
+#nltk.download('stopwords')
+from nltk.corpus import stopwords
+#nltk.download('averaged_perceptron_tagger')
 
+stemmer = PorterStemmer()
+stops = set(stopwords.words("english"))
+punct = re.compile('[%s]' % re.escape(string.punctuation) + '|[0-9]|(:)|(rt )|@\S+|http\S+')
 
 def get_date_dict(filename):
     with open(filename) as f:
@@ -31,25 +38,31 @@ def get_list_of_sentances(filename):
         sentances = []
         lines = f.readlines()
         for l in lines:
-            sentances.append(clean_data(l[19:]))
+            sentances.append(remove_unwanted_chars(l.lower()))
     return sentances
 
 #clean data
 
-def clean_data(line):
-    #TODO: tidy up
-    translation = str.maketrans("", "", punctuation)
-    without_retweet = line.replace('RT ', '', 1)
-    without_urls = re.sub(r"http\S+", "", without_retweet)
-    without_reference = re.sub(r"@\S+", "", without_urls)
-    without_punct = without_reference.translate(translation)
-    return word_tokenize(without_punct)       
+
+def remove_unwanted_chars(line):
+    #remobe stopwords
+    text = ' '.join([word for word in line.split() if word not in stops])
+    #remove punctuation, usernames, links, punctuation
+    without_urls_number_retweet = punct.sub('', text)
+    without_punct = without_urls_number_retweet.strip(string.punctuation)
+    
+    #remove the stopwords
+    tokenised = word_tokenize(without_punct)
+    return [stemmer.stem(t) for t in tokenised]
 
 tokenised_sentances = get_list_of_sentances('data_collected.txt')
+#print(tokenised_sentances)
 
 #pass in min count parameter to ignore words that appear with low frequecy
-
 model = gensim.models.Word2Vec(tokenised_sentances, min_count=10)
 model.save('twittermodel')
 
+#model = gensim.models.Word2Vec.load('twittermodel')
+
+#model.most_similar('good')
 
