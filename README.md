@@ -2,15 +2,11 @@
 
 ### Goal
 
-Sentiment Analysis of Twitter -> specifically looking at the setiment expressed towards the terrorist attack in Egypt 
-
-Does the sentiment affect how long an item stays in the news?
-
-Can we predict how long a story will stay relevant based on initial reaction?
+The main goal is to gain an insight into the way social media reacted to the Egypt terrorist attack on [date]. In order to do this, the Twitter API will be queried to collect tweets containing the words 'Egypt' and 'terrorism'. The data will be cleaned, and then the gensim Word2Vec model will be trained on this data. A website was created to allow users to query the model, and see the associations people have with terrorist attacks. 
 
 ### Data 
 
-Queried the Twitter API with the filters 'Egpyt' and 'Terrorism'. This was restricted to the last 10 days, as, with a free basic account, I can only query a week time span. By collected data over 3 days I was able to extend this to 10 days.
+I queried the Twitter API with the filters 'Egpyt' and 'Terrorism'. This was restricted to the last 10 days, as, with a free basic account, I can only query a week time span. By collected data over 3 days I was able to extend this to 10 days.
 
 The data was parsed to show 
 
@@ -67,4 +63,4 @@ Unsuprisingly, the majority of tweets were on the day the attack happened, with 
 ### Model
 ##### Description and motivation
 
-Gensim model word2vec https://radimrehurek.com/gensim/models/word2vec.html
+I used the Gensim word2vec model, https://radimrehurek.com/gensim/models/word2vec.html . This maps words in a vector space, connecting highly associated words together. It is based on the distributional hypothesis - words that appear in the same contexts share semantic meaning, https://www.tensorflow.org/tutorials/word2vec . I chose to use it because it is an effective technique to understand associations between words. 
